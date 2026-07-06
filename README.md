@@ -1,4 +1,4 @@
-﻿# QuensultingAI Dental Clinic — AI Receptionist Backend
+﻿# QuensultingAI Dental Clinic - AI Receptionist Backend
 
 Production-ready FastAPI backend for an AI Receptionist Voice Agent integrated with **RetellAI Conversational Flow**. Handles appointment booking webhooks, validates patient data, persists records to **Google Sheets**, and sends confirmation emails via **Gmail SMTP**.
 
@@ -9,13 +9,13 @@ Production-ready FastAPI backend for an AI Receptionist Voice Agent integrated w
 This service acts as the backend layer between a RetellAI voice agent and clinic operations. When a caller books an appointment through the voice agent, RetellAI sends a webhook POST request to this API. The backend:
 
 1. Validates all input fields (phone, email, date, time, service)
-2. Enforces clinic business rules (MonΓÇôSat, 9 AMΓÇô6 PM, no Sundays)
+2. Enforces clinic business rules (Mon-Sat, 9 AM-6 PM, no Sundays)
 3. Saves the appointment to Google Sheets
 4. Sends a confirmation email to the patient
 5. Returns a structured JSON response to RetellAI
 
 **Clinic:** QuensultingAI Dental Clinic  
-**Hours:** Monday ΓÇô Saturday, 9:00 AM ΓÇô 6:00 PM
+**Hours:** Monday - Saturday, 9:00 AM - 6:00 PM
 
 ### Services Offered
 
@@ -32,43 +32,43 @@ This service acts as the backend layer between a RetellAI voice agent and clinic
 
 ```
 RetellAI Voice Agent
-        Γöé
-        Γû╝  POST /book-appointment (webhook)
-ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
-Γöé           FastAPI Application          Γöé
-Γöé  ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ  ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ Γöé
-Γöé  Γöé Middleware  Γöé  Γöé Exception       Γöé Γöé
-Γöé  Γöé Request ID  Γöé  Γöé Handlers        Γöé Γöé
-Γöé  Γöé Response    Γöé  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ Γöé
-Γöé  Γöé Time        Γöé                       Γöé
-Γöé  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ                       Γöé
-Γöé        Γöé                               Γöé
-Γöé  ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓû╝ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ   Γöé
-Γöé  Γöé     Appointment Route           Γöé   Γöé
-Γöé  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓö¼ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ   Γöé
-Γöé        Γöé                               Γöé
-Γöé  ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓû╝ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ   Γöé
-Γöé  Γöé   Appointment Service           Γöé   Γöé
-Γöé  Γöé   (orchestration layer)         Γöé   Γöé
-Γöé  ΓööΓöÇΓöÇΓö¼ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö¼ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ   Γöé
-Γöé     Γöé              Γöé                   Γöé
-Γöé  ΓöîΓöÇΓöÇΓû╝ΓöÇΓöÇΓöÇΓöÉ    ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓû╝ΓöÇΓöÇΓöÇΓöÇΓöÉ   ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ Γöé
-Γöé  ΓöéValid-Γöé    Γöé Google   Γöé   Γöé Email  Γöé Γöé
-Γöé  Γöéators Γöé    Γöé Sheets   Γöé   Γöé SMTP   Γöé Γöé
-Γöé  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ    ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ   ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ Γöé
-ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
-        Γöé              Γöé
-        Γû╝              Γû╝
+        |
+        v  POST /book-appointment (webhook)
++---------------------------------------+
+|           FastAPI Application          |
+|  +-------------+  +-----------------+ |
+|  | Middleware  |  | Exception       | |
+|  | Request ID  |  | Handlers        | |
+|  | Response    |  +-----------------+ |
+|  | Time        |                       |
+|  +-------------+                       |
+|        |                               |
+|  +-----v---------------------------+   |
+|  |     Appointment Route           |   |
+|  +-----+---------------------------+   |
+|        |                               |
+|  +-----v---------------------------+   |
+|  |   Appointment Service           |   |
+|  |   (orchestration layer)         |   |
+|  +--+--------------+---------------+   |
+|     |              |                   |
+|  +--v---+    +-----v----+   +--------+ |
+|  |Valid-|    | Google   |   | Email  | |
+|  |ators |    | Sheets   |   | SMTP   | |
+|  +------+    +----------+   +--------+ |
++---------------------------------------+
+        |              |
+        v              v
   Google Sheets    Gmail SMTP
 ```
 
 ### Design Principles
 
-- **Clean Architecture** ΓÇö Routes ΓåÆ Services ΓåÆ External integrations
-- **Dependency Injection** ΓÇö FastAPI `Depends()` for settings and services
-- **Separation of Concerns** ΓÇö Validation, persistence, and email are isolated
-- **Structured Logging** ΓÇö Request ID correlation across all log entries
-- **Fail-Safe Error Handling** ΓÇö Typed exceptions with appropriate HTTP status codes
+- **Clean Architecture** - Routes -> Services -> External integrations
+- **Dependency Injection** - FastAPI `Depends()` for settings and services
+- **Separation of Concerns** - Validation, persistence, and email are isolated
+- **Structured Logging** - Request ID correlation across all log entries
+- **Fail-Safe Error Handling** - Typed exceptions with appropriate HTTP status codes
 
 ---
 
@@ -76,31 +76,31 @@ RetellAI Voice Agent
 
 ```
 dental-ai-agent/
-Γö£ΓöÇΓöÇ app/
-Γöé   Γö£ΓöÇΓöÇ __init__.py
-Γöé   Γö£ΓöÇΓöÇ main.py                  # FastAPI app, middleware, exception handlers
-Γöé   Γö£ΓöÇΓöÇ config.py                # Environment-based settings (Pydantic)
-Γöé   Γö£ΓöÇΓöÇ models/
-Γöé   Γöé   ΓööΓöÇΓöÇ appointment.py       # Request/response Pydantic models
-Γöé   Γö£ΓöÇΓöÇ routes/
-Γöé   Γöé   Γö£ΓöÇΓöÇ appointment.py       # POST /book-appointment
-Γöé   Γöé   ΓööΓöÇΓöÇ health.py            # GET /api/health
-Γöé   Γö£ΓöÇΓöÇ services/
-Γöé   Γöé   Γö£ΓöÇΓöÇ appointment_service.py
-Γöé   Γöé   Γö£ΓöÇΓöÇ google_sheet_service.py
-Γöé   Γöé   ΓööΓöÇΓöÇ email_service.py
-Γöé   ΓööΓöÇΓöÇ utils/
-Γöé       Γö£ΓöÇΓöÇ validators.py        # Business rule validation
-Γöé       ΓööΓöÇΓöÇ logger.py            # Logging configuration
-Γö£ΓöÇΓöÇ tests/
-Γöé   Γö£ΓöÇΓöÇ test_validators.py
-Γöé   ΓööΓöÇΓöÇ test_api.py
-Γö£ΓöÇΓöÇ requirements.txt
-Γö£ΓöÇΓöÇ Dockerfile
-Γö£ΓöÇΓöÇ .env.example
-Γö£ΓöÇΓöÇ .gitignore
-Γö£ΓöÇΓöÇ pytest.ini
-ΓööΓöÇΓöÇ README.md
+|-- app/
+|   |-- __init__.py
+|   |-- main.py                  # FastAPI app, middleware, exception handlers
+|   |-- config.py                # Environment-based settings (Pydantic)
+|   |-- models/
+|   |   +-- appointment.py       # Request/response Pydantic models
+|   |-- routes/
+|   |   |-- appointment.py       # POST /book-appointment
+|   |   +-- health.py            # GET /api/health
+|   |-- services/
+|   |   |-- appointment_service.py
+|   |   |-- google_sheet_service.py
+|   |   +-- email_service.py
+|   +-- utils/
+|       |-- validators.py        # Business rule validation
+|       +-- logger.py            # Logging configuration
+|-- tests/
+|   |-- test_validators.py
+|   +-- test_api.py
+|-- requirements.txt
+|-- Dockerfile
+|-- .env.example
+|-- .gitignore
+|-- pytest.ini
++-- README.md
 ```
 
 ---
@@ -117,7 +117,7 @@ dental-ai-agent/
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/Harsh-1165/dental-ai-agent.git
 cd dental-ai-agent
 
 # Create virtual environment
@@ -153,7 +153,7 @@ Copy `.env.example` to `.env` and fill in all values:
 | `LOG_LEVEL` | Logging level | `INFO` |
 | `CLINIC_NAME` | Clinic name for emails | `QuensultingAI Dental Clinic` |
 | `GOOGLE_CREDENTIALS_PATH` | Path to service account JSON | `credentials.json` |
-| `GOOGLE_SHEET_ID` | Google Spreadsheet ID | `1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms` |
+| `GOOGLE_SHEET_ID` | Google Spreadsheet ID | `your_spreadsheet_id` |
 | `GOOGLE_SHEET_NAME` | Worksheet tab name | `Appointments` |
 | `SMTP_HOST` | SMTP server | `smtp.gmail.com` |
 | `SMTP_PORT` | SMTP port | `587` |
@@ -171,7 +171,7 @@ Copy `.env.example` to `.env` and fill in all values:
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Create a new project (or select an existing one)
 3. Enable the **Google Sheets API**
-4. Create a **Service Account** under IAM & Admin ΓåÆ Service Accounts
+4. Create a **Service Account** under IAM & Admin -> Service Accounts
 5. Download the JSON key file and save it as `credentials.json` in the project root
 6. Create a new Google Spreadsheet
 7. Copy the Spreadsheet ID from the URL:
@@ -291,8 +291,13 @@ Book a new appointment. Supports both direct API field names and RetellAI aliase
 {
   "status": "success",
   "message": "Appointment booked successfully.",
-  "appointment_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-  "timestamp": "2026-07-06T05:21:00.123456Z"
+  "appointment_id": "b67f80fc-e132-4ffc-b2f8-f13943fd1554",
+  "customer_name": "Harsh Maniya",
+  "email": "harsh@gmail.com",
+  "service": "Dental Cleaning",
+  "appointment_date": "2026-07-10",
+  "appointment_time": "11:00 AM",
+  "timestamp": "2026-07-06T12:47:51Z"
 }
 ```
 
@@ -330,8 +335,8 @@ Book a new appointment. Supports both direct API field names and RetellAI aliase
 
 Every response includes:
 
-- `X-Request-ID` ΓÇö Unique correlation ID for tracing
-- `X-Response-Time-Ms` ΓÇö Server processing time in milliseconds
+- `X-Request-ID` - Unique correlation ID for tracing
+- `X-Response-Time-Ms` - Server processing time in milliseconds
 
 ---
 
@@ -389,10 +394,16 @@ All requests are logged with structured output:
 Configure your RetellAI Conversational Flow webhook to POST to:
 
 ```
-https://your-domain.com/book-appointment
+https://your-ngrok-url.ngrok-free.app/book-appointment
 ```
 
 Map RetellAI collected variables to the request body fields. The API accepts both naming conventions (`name` / `customer_name`, etc.).
+
+For local development, expose the server with ngrok:
+
+```bash
+ngrok http 8000
+```
 
 ---
 
